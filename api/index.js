@@ -1,4 +1,4 @@
-const fetch = require('@vercel/fetch')();
+import fetch from "node-fetch";
 
 export default async function handler(request, response) {
     const ip = request.query.ip;
