@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+const fetch = require('node-fetch');
 
 export default async function handler(request, response) {
     const ip = request.query.ip;
@@ -19,9 +19,9 @@ export default async function handler(request, response) {
     try {
         const json = await fetch(`http://${ip}:${port}/players.json`);
         const players = await json.json();
+
+        return response.status(200).json(players);
     } catch(e) {
         return response.status(500).json(e);
     }
-
-    return response.status(200).json(players);
 }
